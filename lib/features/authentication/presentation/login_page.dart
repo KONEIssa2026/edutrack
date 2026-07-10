@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../shared/widgets/app_button.dart';
+import '../../../shared/widgets/app_text_field.dart';
+import '../../../shared/widgets/app_logo.dart';
+import '../../dashboard/presentation/dashboard_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -15,26 +18,7 @@ class LoginPage extends StatelessWidget {
               width: double.infinity,
               height: 250,
               color: Colors.blue,
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.school, color: Colors.white, size: 80),
-                  SizedBox(height: 16),
-                  Text(
-                    'EduTrack',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Une école mieux organisée.',
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
-                  ),
-                ],
-              ),
+              child: const AppLogo(),
             ),
 
             // Partie inférieure (blanche)
@@ -45,30 +29,30 @@ class LoginPage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 30),
 
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Adresse e-mail ou identifiant',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        prefixIcon: const Icon(Icons.person),
-                      ),
+                    AppTextField(
+                      label: 'Adresse e-mail ou identifiant',
+                      icon: Icons.person,
                     ),
                     const SizedBox(height: 20),
 
-                    TextField(
+                    AppTextField(
+                      label: 'Mot de passe',
+                      icon: Icons.lock,
                       obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: 'Mot de passe',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        prefixIcon: const Icon(Icons.lock),
-                      ),
                     ),
                     const SizedBox(height: 30),
 
-                    AppButton(text: 'Se connecter', onPressed: () {}),
+                    AppButton(
+                      text: 'Se connecter',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DashboardPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
