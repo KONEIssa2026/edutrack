@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../shared/widgets/dashboard_card.dart';
+import '../../../core/theme/app_colors.dart';
+import 'widgets/statistics_section.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -7,48 +8,43 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('EduTrack'), centerTitle: true),
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'EduTrack',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications_none),
+            onPressed: () {},
+          ),
+          IconButton(icon: const Icon(Icons.account_circle), onPressed: () {}),
+        ],
+      ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Bonjour Directeur 👋',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
-            Text(
+            const Text(
               'Bienvenue sur votre tableau de bord.',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
             ),
 
-            SizedBox(height: 30),
-            Row(
-              children: [
-                Expanded(
-                  child: DashboardCard(
-                    title: 'Élèves',
-                    value: '1 345',
-                    icon: Icons.school,
-                    iconColor: Colors.blue,
-                  ),
-                ),
-
-                const SizedBox(width: 16),
-
-                Expanded(
-                  child: DashboardCard(
-                    title: 'Enseignants',
-                    value: '68',
-                    icon: Icons.person,
-                    iconColor: Colors.green,
-                  ),
-                ),
-              ],
-            ),
+            const SizedBox(height: 30),
+            const StatisticsSection(),
           ],
         ),
       ),
