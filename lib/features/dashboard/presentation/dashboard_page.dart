@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import 'widgets/statistics_section.dart';
+import '../../students/presentation/pages/students_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -45,6 +46,18 @@ class DashboardPage extends StatelessWidget {
 
             const SizedBox(height: 30),
             const StatisticsSection(),
+            const SizedBox(height: 30),
+
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const StudentsPage()),
+                );
+              },
+              icon: const Icon(Icons.school),
+              label: const Text('Gestion des élèves'),
+            ),
           ],
         ),
       ),
