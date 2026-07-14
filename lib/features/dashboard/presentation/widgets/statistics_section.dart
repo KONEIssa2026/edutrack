@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/dashboard_card.dart';
+import '../../../../core/theme/app_colors.dart';
 
 class StatisticsSection extends StatelessWidget {
   const StatisticsSection({super.key});
@@ -10,7 +10,7 @@ class StatisticsSection extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: const [
+          children: [
             Expanded(
               child: DashboardCard(
                 title: 'Élèves',
@@ -34,7 +34,7 @@ class StatisticsSection extends StatelessWidget {
         SizedBox(height: 16),
 
         Row(
-          children: const [
+          children: [
             Expanded(
               child: DashboardCard(
                 title: 'Parents',
